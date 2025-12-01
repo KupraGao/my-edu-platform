@@ -9,9 +9,20 @@ export default function Navbar() {
 
   return (
     <nav className="bg-gray-100 p-4 flex justify-between items-center">
-      <Link href="/" className="text-xl font-bold">
-        MyEduPlatform
-      </Link>
+  <Link href="/" className="text-xl font-bold">
+    MyEduPlatform
+  </Link>
+      <div className="flex items-center gap-6">
+  <Link href="/about" className="hover:underline">
+    ჩვენს შესახებ
+  </Link>
+  <Link href="/courses" className="hover:underline">
+    კურსები
+  </Link>
+  <Link href="/contact" className="hover:underline">
+    კონტაქტი
+  </Link>
+</div>
 
       <div>
         {!session ? (
