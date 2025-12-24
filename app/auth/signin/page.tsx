@@ -20,6 +20,13 @@ export default function SignIn() {
     );
   }
 
+  // ✅ Google OAuth handler (აუცილებელია App Router-ზე)
+  const handleGoogleLogin = async () => {
+    await signIn("google", {
+      callbackUrl: "/dashboard",
+    });
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50">
       <div className="w-full max-w-md rounded bg-white p-8 shadow">
@@ -60,26 +67,12 @@ export default function SignIn() {
 
         {/* ⭐ OAuth Login */}
         <div className="space-y-3">
-          {/* ✅ Google OAuth — explicit callbackUrl აუცილებელია Production-ზე */}
           <button
-            onClick={() =>
-              signIn("google", {
-                callbackUrl: "/dashboard",
-              })
-            }
+            type="button"
+            onClick={handleGoogleLogin}
             className="w-full rounded bg-red-500 py-3 text-white hover:bg-red-600"
           >
             Continue with Google
-          </button>
-
-          {/* ⚠️ Facebook ღილაკი UI-ზეა, მაგრამ რეალურად არ იმუშავებს
-              რადგან FacebookProvider და env-ები ამ ეტაპზე გამორთულია.
-              რეკომენდაცია: ან დამალე, ან დაამატე Facebook OAuth სრულად. */}
-          <button
-            onClick={() => signIn("facebook")}
-            className="w-full rounded bg-blue-700 py-3 text-white hover:bg-blue-800"
-          >
-            Continue with Facebook
           </button>
         </div>
 
